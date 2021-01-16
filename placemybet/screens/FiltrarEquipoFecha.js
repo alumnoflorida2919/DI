@@ -4,7 +4,7 @@ import {
     View,
     Text,
     StatusBar,
-    ScrollView,
+    ScrollView, FlatList,
 } from 'react-native';
 import { Input } from 'react-native-elements';
 import { PlaceMyBetLogo } from '../component/PlaceMyBetLogo';
@@ -14,6 +14,14 @@ import { TablaFecha } from '../component/TablaFecha';
 
 
 export default class FiltrarEquipoFecha extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            datos: [{equipo: "Valencia-Espanyol", fecha:'13-02-20'},
+                {equipo: "Valencia-Espanyol", fecha:'13-02-20'},
+                {equipo: "Valencia-Espanyol", fecha:'13-02-20'}]
+        };
+    }
     render() {
         return (
             <View style={styles.backGround}>
@@ -55,14 +63,32 @@ export default class FiltrarEquipoFecha extends Component {
                     </View>
                 </View>
                 <ScrollView>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-                        <View style={{ flexDirection: 'column' }}>
-                            <Tabla></Tabla>                            
-                        </View>
-                        <View style={{ flexDirection: 'column' }}>
-                            <TablaFecha></TablaFecha>                            
-                        </View>
-                    </View>
+                    <FlatList data={this.state.datos}
+                              keyExtractor={(item, index) => index.toString()}
+                              style={{padding: 5}}
+                              renderItem={({item}) => {
+                                  return (
+                                      <View elevation={4} style={{
+                                          backgroundColor: 'orange', display: 'flex', flexDirection: 'row'
+                                          , justifyContent: 'space-between',
+                                      }}>
+                                          <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5}}>
+                                              {item.equipo}
+                                          </Text>
+                                          <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5}}>
+                                              {item.fecha}
+                                          </Text>
+                                      </View>
+                                  );
+                              }}/>
+                    {/*<View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>*/}
+                    {/*    <View style={{ flexDirection: 'column' }}>*/}
+                    {/*        <Tabla></Tabla>*/}
+                    {/*    </View>*/}
+                    {/*    <View style={{ flexDirection: 'column' }}>*/}
+                    {/*        <TablaFecha></TablaFecha>*/}
+                    {/*    </View>*/}
+                    {/*</View>*/}
                     <BotonOk>
                     </BotonOk>
                 </ScrollView>
@@ -94,7 +120,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         padding: 10,
     },
-    input: {
+    input2: {
         flex: 1,
         backgroundColor: 'grey',
         color: 'white',

@@ -20,9 +20,9 @@ export default class FiltradoUsuarioFecha extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            datos: [{fecha:'18-1-20', tipo: 'under', goles: 1.5, apuesta: 75},
-                {fecha:'18-11-21', tipo: 'over', goles: 2.5, apuesta: 175},
-                {fecha:'10-1-20', tipo: 'under', goles: 3.5, apuesta: 750}],
+            datos: [{fecha: '18-1-20', tipo: 'under', goles: 1.5, apuesta: 75},
+                {fecha: '18-11-21', tipo: 'over', goles: 2.5, apuesta: 175},
+                {fecha: '10-1-20', tipo: 'under', goles: 3.5, apuesta: 750}],
         };
     }
 
@@ -62,9 +62,21 @@ export default class FiltradoUsuarioFecha extends Component {
                               style={{padding: 5}}
                               renderItem={({item}) => {
                                   return (
-                                      <View elevation={4} style={{backgroundColor: 'orange'}}>
+                                      <View elevation={4} style={{
+                                          backgroundColor: 'orange', display: 'flex', flexDirection: 'row'
+                                          , justifyContent: 'space-between',
+                                      }}>
                                           <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5}}>
-                                              {item.fecha}  {item.tipo} {item.goles}    {item.apuesta}
+                                              {item.fecha}
+                                          </Text>
+                                          <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5}}>
+                                              {item.tipo}
+                                          </Text>
+                                          <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5}}>
+                                              {item.goles}
+                                          </Text>
+                                          <Text style={{color: 'green', fontSize: 20, fontWeight: 'bold', margin: 5}}>
+                                              {item.apuesta}
                                           </Text>
                                       </View>
                                   );

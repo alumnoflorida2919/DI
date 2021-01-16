@@ -4,6 +4,6 @@
 
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
-import FiltradoUsuarioFecha from './screens/FiltradoUsuarioFecha';
+import FiltradoMercado from './screens/FiltradoMercado';
 
-AppRegistry.registerComponent(appName, () => FiltradoUsuarioFecha); 
+AppRegistry.registerComponent(appName, () => FiltradoMercado);
